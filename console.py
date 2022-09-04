@@ -172,6 +172,7 @@ class HBNBCommand(cmd.Cmd):
             return False
         if len(argl) == 1:
             print("** instance id missing **")
+<<<<<<< HEAD
             return False
         if "{}.{}".format(argl[0], argl[1]) not in objdict.keys():
             print("** no instance found **")
@@ -207,3 +208,32 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
+=======
+        else:
+            all_objs = storage.all()
+            for key, objc in all_objs.items():
+                ob_name = objc.__class__.__name__
+                ob_id = objc.id
+                if ob_name == args[0] and ob_id == args[1].strip('"'):
+                    if len(args) == 2:
+                        print("** attribute name missing **")
+                 elif len(args) == 3:
+                         print("** value missing **")
+                        else:
+                         setattr(objc, args[2], args[3])
+                         storage.save()
+                     return
+                print("** no instance found **")
+
+     def do_quit(self, line):
+         """ Quit command to exit the command interpreter """
+         return True
+
+    def do_EOF(self, line):
+         """ EOF command to exit the command interpreter """
+         return True
+
+ if __name__ == '__main__':
+     HBNBCommand().cmdloop()
+
+>>>>>>> ab559db3cdfda034741cf9744cf855be392add7a
